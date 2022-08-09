@@ -2,7 +2,10 @@
   hosts: all
   tasks:
   tasks:
+    - name: export environment
+      command: export KUBECONFIG=/root/ocp4/auth/kubeconfig
     - name: create project project-test01
       command: oc new-project project-test01
       register: project
     - debug: var=project.stdout_lines
+
