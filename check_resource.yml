@@ -3,9 +3,15 @@
   tasks:
     - name: CPU Check
       shell: cat /proc/cpuinfo
+      register: cpu
+    - debug: var=cpu.stdout_lines
 
     - name: memory check shell
       shell: cat /proc/meminfo|grep Total
+      register: mem 
+    - debug: var=mem.stdout_lines
      
     - name: disk capacity check
-      shell: lsblk
+      command: /usr/bin/lsblk
+      register: disk
+    - debug: var=disk.stout_lines
