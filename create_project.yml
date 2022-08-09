@@ -1,7 +1,8 @@
-- name: OCP4 Cluster Resource CPU and Memory and Disk Check
+- name: OCP4 Project create only
   hosts: all
   tasks:
-    - name: create project Project-Test01
-      shell: oc get new-project Project-Test01
+  tasks:
+    - name: create project project-test01
+      command: oc new-project project-test01
       register: project
     - debug: var=project.stdout_lines
