@@ -1,0 +1,11 @@
+- name: OCP4 Cluster Resource CPU and Memory and Disk Check
+  hosts: all
+  tasks:
+    - name: CPU Check
+      shell: cat /proc/cpuinfo
+
+    - name: memory check shell
+      shell: cat /proc/meminfoe|grep Total
+     
+    - name: disk capacity check
+      shell: lsblk
