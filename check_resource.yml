@@ -12,6 +12,5 @@
     - debug: var=mem.stdout_lines
      
     - name: disk capacity check
-      command: /usr/bin/lsblk
-      register: disk
-    - debug: var=disk.stout_lines
+      ansible.builtin.debug:
+        msg: "Total Disk {{ ansible_facts['devices'] }}"
