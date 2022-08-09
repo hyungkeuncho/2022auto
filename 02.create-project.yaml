@@ -1,0 +1,14 @@
+---
+- name: k8s demo
+  hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    project_name: "project-test01"
+  tasks:
+    - name: create {{ project_name }} namespace
+      kubernetes.core.k8s:
+        api_version: v1
+        kind: Namespace
+        name: "{{ project_name }}"
+        state: present
