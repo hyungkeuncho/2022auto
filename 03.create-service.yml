@@ -1,0 +1,13 @@
+---
+- name: k8s demo create service
+  hosts: all
+  gather_facts: false
+  connection: local
+  vars:
+    project_name: "project-test01"
+  tasks:
+    - name: create k8s service
+      kubernetes.core.k8s:
+        src: 03-01.myservice.yml
+        namespace: "{{ project_name }}"
+        state: present
